@@ -1,0 +1,145 @@
+[
+  {
+    "id": "event-overview",
+    "category": "Event Overview",
+    "title": "Senter Music Festival 2026 Overview",
+    "tags": ["dates", "when", "where", "location", "what is senter fest", "dj snake sri lanka", "october 2026", "halloween"],
+    "content": "Senter Music Festival 2026 is South Asia's premier EDM and electronic dance music festival presented by LFG Entertainment and Senter Records. It features global superstar DJ Snake performing live in Sri Lanka for a special 2-day Halloween Edition.\n- Dates: Friday, October 30 & Saturday, October 31, 2026 (2 Full Days & Nights).\n- Venue: Port City Colombo, Western Province, Sri Lanka (Postal Code: 00100).\n- Expected Attendance: Over 30,000+ festival goers from Sri Lanka and across South Asia.\n- Daily Festival Hours: 6:00 PM to 2:00 AM daily (Gates open early from 3:00 PM / entry starts around 5:00 PM).\n- Websites: https://www.sentermusicfestival.com and https://www.senterfest.com",
+    "metadata": {
+      "dates": "October 30-31, 2026",
+      "hours": "6:00 PM - 2:00 AM",
+      "venue": "Port City Colombo, Sri Lanka",
+      "expected_crowd": "30,000+"
+    }
+  },
+  {
+    "id": "dj-snake-headliner",
+    "category": "Lineup & Artists",
+    "title": "DJ Snake - Headliner Profile & Hit Records",
+    "tags": ["dj snake", "headliner", "songs", "tracks", "billion streams", "taki taki", "lean on", "turn down for what", "let me love you", "loco contigo"],
+    "content": "DJ Snake is the main headliner for Senter Music Festival 2026. He is recognized as the #1 most popular international DJ and multi-platinum French producer performing live in South Asia, with over 60 Million global followers and multiple songs in the Billion Streams Club:\n- 'Let Me Love You' (feat. Justin Bieber) – 3.17 Billion streams\n- 'Lean On' (with Major Lazer feat. MØ) – 2.76 Billion streams\n- 'Taki Taki' (feat. Selena Gomez, Ozuna, Cardi B) – 1.86 Billion streams\n- 'Middle' (feat. Bipolar Sunshine) – 1.33 Billion streams\n- 'Turn Down for What' (with Lil Jon) – 1.2 Billion streams\n- 'Loco Contigo' (feat. J Balvin & Tyga) – 995 Million streams\n- 'Get Low' (with Dillon Francis) – 776 Million streams\n- 'You Know You Like It' (with AlunaGeorge) – 687 Million streams\n- 'A Different Way' (feat. Lauv) – 320 Million streams\nDJ Snake will perform an exclusive 2-Night South Asia festival headlining set in Colombo.",
+    "metadata": {
+      "artist": "DJ Snake",
+      "role": "Main Headliner",
+      "followers": "60M+",
+      "top_hits": ["Let Me Love You", "Lean On", "Taki Taki", "Middle", "Turn Down for What", "Loco Contigo"]
+    }
+  },
+  {
+    "id": "supporting-lineup",
+    "category": "Lineup & Artists",
+    "title": "Supporting Lineup & Resident Artists",
+    "tags": ["lineup", "artists", "dj mass", "flecan", "who is performing", "support acts", "djs"],
+    "content": "The festival lineup includes international headliner DJ Snake alongside prominent regional and Sri Lankan electronic artists:\n- DJ Mass (Sri Lankan EDM pioneer & producer of hit record 'Pem Kekula')\n- Flecan\n- 5 Additional Local & Regional Support Acts (Act 01, Act 02, Act 03, Act 04, Act 05) will be officially revealed on the website and social media closer to the event.",
+    "metadata": {
+      "artists": ["DJ Snake", "DJ Mass", "Flecan", "+ 5 TBA Support Acts"]
+    }
+  },
+  {
+    "id": "tickets-and-passes",
+    "category": "Ticketing",
+    "title": "Ticket Tiers, Presave & Pricing",
+    "tags": ["tickets", "passes", "price", "how much", "buy tickets", "presave", "cost", "ga", "vip", "vvip", "tables"],
+    "content": "Ticket pre-registration / presave is currently open on the official website (sentermusicfestival.com/tickets or sentermusicfestival.com/presave). Presave members receive 24-hour early access, priority tier selection, and early-bird discount pricing.\nOfficial Ticket Tiers:\n1. Phase 1 - General Admission (GA): LKR 15,000 (Access to Main Stage Arena, F&B village, Halloween zone & general festival areas).\n2. Phase 1 - VIP Pass: LKR 45,000 (Access to elevated VIP Sky Lounge, dedicated bars, express VIP queue entry, and premium viewing deck).\n3. VVIP Pass & Cabanas / Tables: Custom luxury concierge bookings with bottle service, dedicated servers, and ultra-premium stage viewing. For VVIP bookings and table reservations, contact the Concierge via WhatsApp or Call at +94 77 117 7118.",
+    "metadata": {
+      "ga_price": "LKR 15,000",
+      "vip_price": "LKR 45,000",
+      "vvip_booking": "WhatsApp +94 77 117 7118",
+      "presave_url": "https://www.sentermusicfestival.com/tickets"
+    }
+  },
+  {
+    "id": "festival-zones",
+    "category": "Experience & Venue",
+    "title": "The 7 Immersive Festival Zones",
+    "tags": ["zones", "arena", "sky lounge", "halloween zone", "food", "f&b", "influencer", "what to do"],
+    "content": "Senter Fest is engineered as an expansive multi-dimensional festival ecosystem featuring 7 distinct zones:\n- 01 // Main Stage Arena: The central concert ground with high-impact audio-visual arrays, laser rigs, and headline performances.\n- 02 // VIP Sky Lounge: Elevated viewing deck over the crowds with dedicated culinary stations and private premium bars.\n- 03 // Halloween Experience Zone: Immersive spooky walkthroughs, Halloween-themed installations, and roving character performers.\n- 04 // Food & Beverage Village: Dozens of gourmet food trucks, local Sri Lankan street bites, specialty cocktail bars, and hydration points.\n- 05 // Brand Activation Areas: Interactive sponsor pop-ups, gamified contests, and festival merchandise.\n- 06 // Content Creation Areas: Neon-lit custom backdrops, photo moments, and 360-degree video booths.\n- 07 // Influencer & Media Lounge: A selective networking space for creators, VIP press, and artists.",
+    "metadata": {
+      "total_zones": 7,
+      "key_zones": ["Main Stage Arena", "VIP Sky Lounge", "Halloween Experience Zone", "F&B Village", "Brand Activations", "Content Creation", "Influencer Lounge"]
+    }
+  },
+  {
+    "id": "open-calls-competitions",
+    "category": "Competitions & Showcase",
+    "title": "Open Calls: DJ Battle, Cosplay & Wall Art Competitions",
+    "tags": ["competitions", "cosplay", "dj competition", "wall art", "perform", "showcase", "open call", "register"],
+    "content": "Senter Fest provides platforms for emerging creative talent:\n1. DJ Competition: Battle for a slot on the Senter Fest main stage. Guidelines and registration announcements will be posted on social media channels.\n2. Cosplay Showcase: Halloween edition costume craftsmanship showcase with live runway presentation and grand prizes. (Registration has reached capacity for early rounds; stay tuned for updates).\n3. Wall Art Competition: Top visual artists submit artwork with hashtag #djsnakesrilanka along with a Behind-The-Scenes (BTS) process video for grand awards and full festival access.",
+    "metadata": {
+      "categories": ["DJ Competition", "Cosplay Showcase", "Wall Art Competition"]
+    }
+  },
+  {
+    "id": "organizers-senter-records-lfg",
+    "category": "About Organizers",
+    "title": "About Senter Records & LFG Entertainment",
+    "tags": ["senter records", "lfg entertainment", "organizers", "pem kekula", "who created senter", "record label"],
+    "content": "Senter Music Festival is co-produced by Senter Records and LFG Entertainment:\n- Senter Records (www.senterrecords.com): A Sri Lankan music and entertainment collective dedicated to empowering local producers, DJs, and performers. Senter Records is the label behind 'Pem Kekula', the first mainstream EDM track to top all major broadcast and streaming charts in Sri Lanka.\n- LFG Entertainment (lfg-entertainment.com): A premier live entertainment and concert production company operating across the Asia-Pacific region, curating arena-scale experiences, lighting choreography, and international tours.",
+    "metadata": {
+      "record_label": "Senter Records",
+      "promoter": "LFG Entertainment",
+      "notable_release": "Pem Kekula (Chart-topping EDM Hit)"
+    }
+  },
+  {
+    "id": "dj-senter-academy",
+    "category": "Education & Academy",
+    "title": "DJ Senter Academy & Skill Development",
+    "tags": ["dj senter", "academy", "learn djing", "music production", "mixing classes", "courses", "djsenter.com/academy"],
+    "content": "DJ Senter Academy (https://djsenter.com/academy) is the educational arm affiliated with Senter, offering masterclasses and hands-on coaching in:\n- Electronic Music Production & Sound Design\n- Professional DJ Mixing Techniques & Beatmatching\n- Stage Presence & Live Performance\n- Music Industry Networking & Career Development.",
+    "metadata": {
+      "academy_url": "https://djsenter.com/academy"
+    }
+  },
+  {
+    "id": "past-editions-history",
+    "category": "Festival History",
+    "title": "Past Editions & Festival Legacy",
+    "tags": ["past events", "history", "editions", "walshy fire", "major lazer", "lotus tower", "xo festival", "2022", "2023", "2024"],
+    "content": "Senter Music Festival has celebrated 5 major editions over 5 active years with over 150,000+ total attendees and 100+ artists:\n- 2024 (December 31, 2024): SENTER NYE Edition at the Colombo Lotus Tower Grounds with midnight countdown pyro and lights.\n- 2023 (June 9, 2023): SENTER featuring Walshy Fire from Major Lazer at The Marquee, Port City Colombo (presented by Coca-Cola) with DJ Jaz, DJ Mass, Romaine Willis, Apzi, and Binu Sax.\n- 2023 (February 3, 2023): The XO Music Festival '23 at Port City Colombo with DJ Katch, Subandrio, and the viral XO Team.\n- 2022 (March 12, 2022): SENTER March Edition at Excel World Colombo featuring DJ Katch, Iraj, Apzi, ADK, and Sandaru Sathsara.",
+    "metadata": {
+      "years_active": "5 Years",
+      "total_attendees": "150,000+",
+      "artists_performed": "100+",
+      "past_editions": 5
+    }
+  },
+  {
+    "id": "venue-and-transportation",
+    "category": "Venue & Logistics",
+    "title": "Venue Details, Location & Getting to Port City Colombo",
+    "tags": ["venue", "how to get there", "port city colombo", "parking", "directions", "address", "map", "transport"],
+    "content": "Venue Information:\n- Location: Port City Colombo, Colombo 00100, Western Province, Sri Lanka.\n- Port City is a modern coastal waterfront destination located right in the heart of Colombo, offering scenic oceanfront festival grounds.\n- Access & Parking: Dedicated entrance gates with security screening, designated on-site and adjacent parking lots, and designated ride-share (Uber / PickMe) drop-off and pick-up zones.\n- Public Transit: Easily accessible via Colombo Fort railway station and Central Bus Stand (5-10 minutes by taxi/tuk-tuk).",
+    "metadata": {
+      "venue": "Port City Colombo",
+      "city": "Colombo",
+      "country": "Sri Lanka"
+    }
+  },
+  {
+    "id": "event-policies-faq",
+    "category": "Rules & FAQs",
+    "title": "Age Restrictions, Safety, Dress Code & General FAQs",
+    "tags": ["age limit", "faq", "rules", "dress code", "security", "prohibited items", "refund", "re-entry"],
+    "content": "Festival Policies & Frequently Asked Questions:\n- Age Restriction: 18+ for General Admission and VIP (Valid Government ID / Passport required at entry). Under 18 permitted only in specific designated family zones if accompanied by a legal guardian.\n- Dress Code: Festival chic / EDM festival rave wear / Halloween themed costumes are strongly encouraged! Comfortable footwear recommended for open grounds.\n- Prohibited Items: Outside alcohol, illegal substances, weapons, fireworks/flares, large professional cameras with detachable zoom lenses (without media accreditation), and glass containers.\n- Re-entry Policy: Wristbands are scanned on entry. Re-entry policies are governed by security wristband tier checkpoints.\n- Medical & Hydration: Free water stations and 24/7 on-site first aid / paramedic response units available across the venue.",
+    "metadata": {
+      "age_limit": "18+ (ID required)",
+      "theme": "Halloween / Festival Rave",
+      "prohibited": "Outside alcohol, weapons, glass"
+    }
+  },
+  {
+    "id": "contact-and-socials",
+    "category": "Contact & Concierge",
+    "title": "Contact Concierge, WhatsApp, Social Media & Official Links",
+    "tags": ["contact", "phone", "whatsapp", "email", "instagram", "facebook", "tiktok", "social media", "customer service", "inquiries"],
+    "content": "Official Festival Contact & Communication Channels:\n- Phone / Direct WhatsApp Concierge: +94 77 117 7118\n- WhatsApp Direct Chat Link: https://wa.me/94771177118\n- Official Website: https://www.sentermusicfestival.com and https://www.senterfest.com\n- Instagram: https://www.instagram.com/senterfestival (@senterfestival)\n- Facebook: https://www.facebook.com/SenterFestival (@SenterFestival)\n- TikTok: https://www.tiktok.com/@senter.festival (@senter.festival)\n- Inquiries Handled: VVIP Tables, Sponsorships, Media Press Accreditation, Vendor & Food Stalls, Artist Inquiries, General Help.",
+    "metadata": {
+      "phone": "+94 77 117 7118",
+      "whatsapp_url": "https://wa.me/94771177118",
+      "instagram": "@senterfestival",
+      "facebook": "SenterFestival",
+      "tiktok": "@senter.festival"
+    }
+  }
+]
