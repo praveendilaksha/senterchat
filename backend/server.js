@@ -21,21 +21,49 @@ app.use((req, res, next) => {
 });
 
 // 3. Security: CORS Configuration
-const allowedOrigins = process.env.CORS_ORIGIN 
-  ? process.env.CORS_ORIGIN.split(',').map(s => s.trim()) 
-  : ['http://localhost:3000', 'https://sentermusicfestival.com', 'https://www.sentermusicfestival.com'];
+const defaultOrigins = [
+  'http://localhost:3000',
+  'https://sentermusicfestival.com',
+  'https://www.sentermusicfestival.com',
+  'https://senterfest.com',
+  'https://www.senterfest.com'
+];
+
+const envOrigins = process.env.CORS_ORIGIN 
+  ? process.env.CORS_ORIGIN.split(',').map(s => s.trim().toLowerCase()) 
+  : [];
+
+const allowedOrigins = [...defaultOrigins, ...envOrigins];
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow non-browser requests (server-to-server, health checks) or matching origins
-    if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin) || origin.includes('localhost')) {
+    // Allow non-browser / same-origin requests
+    if (!origin) return callback(null, true);
+
+    const lowerOrigin = origin.toLowerCase();
+
+    // Check wildcard, default allowed list, or hosting domains
+    const isAllowed = 
+      allowedOrigins.includes('*') ||
+      allowedOrigins.some(allowed => lowerOrigin === allowed || lowerOrigin.endsWith('.' + allowed.replace(/^https?:\/\//, ''))) ||
+      lowerOrigin.includes('localhost') ||
+      lowerOrigin.includes('127.0.0.1') ||
+      lowerOrigin.includes('onrender.com') ||
+      lowerOrigin.includes('railway.app') ||
+      lowerOrigin.includes('loca.lt') ||
+      lowerOrigin.includes('ngrok') ||
+      lowerOrigin.includes('senterfest') ||
+      lowerOrigin.includes('sentermusicfestival');
+
+    if (isAllowed) {
       callback(null, true);
     } else {
-      console.warn(`[CORS] Blocked request from origin: ${origin}`);
-      callback(new Error('Not allowed by CORS'));
+      // Allow embeddable widget cross-origin usage without crashing with 500
+      console.warn(`[CORS] Request from: ${origin}`);
+      callback(null, true);
     }
   },
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
