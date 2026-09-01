@@ -119,14 +119,23 @@ class RAGEngine {
       if (lowerQuery.includes('snake') || lowerQuery.includes('song') || lowerQuery.includes('track') || lowerQuery.includes('hit')) {
         if (doc.id === 'dj-snake-headliner') bonusScore += 4.0;
       }
-      if (lowerQuery.includes('time') || lowerQuery.includes('date') || lowerQuery.includes('when') || lowerQuery.includes('where') || lowerQuery.includes('location')) {
-        if (doc.id === 'event-overview' || doc.id === 'venue-and-transportation') bonusScore += 4.0;
+      if (lowerQuery.includes('time') || lowerQuery.includes('date') || lowerQuery.includes('when') || lowerQuery.includes('where') || lowerQuery.includes('location') || lowerQuery.includes('gate') || lowerQuery.includes('opening')) {
+        if (doc.id === 'event-overview' || doc.id === 'venue-and-transportation' || doc.id === 'frequently-asked-questions') bonusScore += 4.0;
       }
-      if (lowerQuery.includes('contact') || lowerQuery.includes('phone') || lowerQuery.includes('whatsapp') || lowerQuery.includes('call')) {
+      if (lowerQuery.includes('contact') || lowerQuery.includes('phone') || lowerQuery.includes('whatsapp') || lowerQuery.includes('call') || lowerQuery.includes('email')) {
         if (doc.id === 'contact-and-socials') bonusScore += 5.0;
       }
       if (lowerQuery.includes('zone') || lowerQuery.includes('arena') || lowerQuery.includes('vip') || lowerQuery.includes('food')) {
         if (doc.id === 'festival-zones') bonusScore += 3.0;
+      }
+      if (lowerQuery.includes('privacy') || lowerQuery.includes('data') || lowerQuery.includes('nic') || lowerQuery.includes('passport') || lowerQuery.includes('personal information')) {
+        if (doc.id === 'privacy-policy-data-protection') bonusScore += 6.0;
+      }
+      if (lowerQuery.includes('term') || lowerQuery.includes('condition') || lowerQuery.includes('legal') || lowerQuery.includes('qr') || lowerQuery.includes('resale') || lowerQuery.includes('drone') || lowerQuery.includes('photography')) {
+        if (doc.id === 'ticketing-terms-and-conditions') bonusScore += 5.0;
+      }
+      if (lowerQuery.includes('faq') || lowerQuery.includes('question') || lowerQuery.includes('refund') || lowerQuery.includes('cancel') || lowerQuery.includes('transfer') || lowerQuery.includes('upgrade') || lowerQuery.includes('rain') || lowerQuery.includes('weather') || lowerQuery.includes('parking') || lowerQuery.includes('smoke') || lowerQuery.includes('smoking') || lowerQuery.includes('prohibit') || lowerQuery.includes('age') || lowerQuery.includes('re-entry') || lowerQuery.includes('reentry')) {
+        if (doc.id === 'frequently-asked-questions' || doc.id === 'event-policies-rules' || doc.id === 'ticketing-terms-and-conditions') bonusScore += 4.5;
       }
 
       const totalScore = bm25Score + bonusScore;

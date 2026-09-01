@@ -50,7 +50,7 @@ Located at [`backend/rag/kb_data.json`](backend/rag/kb_data.json):
 1. **Event Overview & Schedule**: Oct 30–31, 2026 • 6PM–2AM daily • Port City Colombo.
 2. **Headliner DJ Snake**: 60M+ followers, Billion Streams Club hits (*Let Me Love You*, *Lean On*, *Taki Taki*, *Turn Down for What*, *Middle*).
 3. **Supporting Lineup**: DJ Mass, Flecan, + 5 TBA support acts.
-4. **Tickets & Passes**: Phase 1 GA (LKR 15,000), Phase 1 VIP (LKR 45,000), VVIP Tables & Cabanas via WhatsApp (+94 77 117 7118).
+4. **Tickets & Passes**: Phase 1 GA (LKR 15,000), Phase 1 VIP (LKR 35,000), VVIP Tables & Cabanas via WhatsApp (+94 77 117 7118).
 5. **7 Immersive Zones**: Main Stage Arena, VIP Sky Lounge, Halloween Experience, F&B Village, Brand Activations, Content Creation, Influencer Lounge.
 6. **Competitions & Open Calls**: DJ Competition, Cosplay Runway, Wall Art BTS.
 7. **Organizers**: Senter Records (producers of chart-topper *"Pem Kekula"*) & LFG Entertainment.

@@ -192,6 +192,7 @@ app.post('/api/chat', rateLimiter, async (req, res) => {
 
     return res.json({
       reply,
+      response: reply,
       uiComponent,
       sources: sources.map(s => ({
         id: s.id,

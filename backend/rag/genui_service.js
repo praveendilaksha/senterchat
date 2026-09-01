@@ -45,7 +45,7 @@ class GenUIService {
               id: 'vip',
               name: 'VIP Pass',
               tag: 'Most Popular',
-              price: 'LKR 45,000',
+              price: 'LKR 35,000',
               priceSub: 'Per pass',
               featured: true,
               features: [
@@ -146,7 +146,7 @@ class GenUIService {
         dates: 'October 30 & 31, 2026',
         edition: 'Halloween 2-Day Edition',
         hours: '6:00 PM – 2:00 AM Daily',
-        gateTimes: 'Gates open 3:00 PM · Entry from 5:00 PM',
+        gateTimes: 'Gates open 4:00 PM · Music 6:00 PM – 2:00 AM',
         expectedCrowd: '30,000+ Electronic Music Fans',
         mapUrl: 'https://maps.google.com/?q=Port+City+Colombo+Sri+Lanka',
         ctaText: 'Pre-Save Tickets',

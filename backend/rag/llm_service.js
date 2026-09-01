@@ -24,14 +24,19 @@ class LLMService {
 
   getSystemInstruction(context) {
     const festivalOverview = `Event: Senter Music Festival 2026 (DJ Snake Live in Sri Lanka - Halloween 2-Day Edition).
-Dates: Friday, October 30 & Saturday, October 31, 2026 (6:00 PM - 2:00 AM daily, gates open 3:00 PM / entry from 5:00 PM).
-Venue: Port City Colombo, Sri Lanka (Postal Code: 00100).
+Dates: Friday, October 30 & Saturday, October 31, 2026 (Gates open at 4:00 PM daily; festival music 6:00 PM - 2:00 AM daily).
+Venue: Port City Colombo, Western Province, Sri Lanka (Postal Code: 00100).
 Headliner: DJ Snake (exclusive 2-night headline set, hits: Let Me Love You, Lean On, Taki Taki, Middle, Turn Down for What, Loco Contigo).
 Supporting Lineup: DJ Mass (Sri Lankan EDM pioneer & Pem Kekula producer), Flecan, + 5 TBA regional support acts.
-Tickets: Presave is open at sentermusicfestival.com/tickets. Phase 1 GA is LKR 15,000, Phase 1 VIP is LKR 45,000, VVIP Tables & Cabanas via WhatsApp Concierge (+94 77 117 7118).
-Refund Policy: All ticket sales are final and non-refundable. However, tickets can be transferred to another person.
-Zones: 7 Zones including Main Stage Arena, VIP Sky Lounge, Halloween Experience Zone, F&B Village, Brand Activations, Content Creation, Influencer Lounge.
-Organizers: Senter Records & LFG Entertainment.`;
+Tickets: Presave is open at sentermusicfestival.com/tickets. Phase 1 GA is LKR 15,000 (valid both days), Phase 1 VIP is LKR 35,000 (valid both days), VVIP Tables & Cabanas via WhatsApp Concierge (+94 77 117 7118). Max 10 tickets per transaction.
+Ticket Policies: All ticket sales are final, strictly non-refundable, non-exchangeable, and non-transferable (tickets cannot be transferred or upgraded from GA to VIP). Re-entry is strictly not permitted (one entry per day). If the festival is officially cancelled by organizers, full ticket value will be refunded.
+Age Policy: Ticket holders must be 16+ for independent entry. Under 16 must be accompanied by a parent/guardian who purchases on their behalf (children under 7 not admitted).
+Prohibited Items: Drugs, cigarettes/smoking products, weapons, outside food/liquids/drinks, alcohol, and unauthorized professional recording gear or drones.
+Parking: No dedicated event parking (Port City parking is at vehicle owner's own risk).
+Weather: Outdoor experience; event proceeds in rain unless officially cancelled for safety.
+Privacy & Data: Handled by Data Controller LFG Global Entertainment Group Pte. Ltd. NIC/Passport IDs collected strictly for ticket fulfillment and gate anti-fraud verification.
+Contact & Emails: Support: hello@lfg-entertainment.com | Ticketing: tickets@lfg-entertainment.com | Concierge WhatsApp: +94 77 117 7118.
+Organizers: LFG Global Entertainment Group Pte. Ltd. & Senter Records.`;
 
     const cleanContext = (context && !context.includes('No specific festival data found'))
       ? context.replace(/\[Source \d+:[^\]]+\]/g, '').trim()
@@ -51,10 +56,10 @@ Conversation Guidelines & Dynamic Follow-Ups:
 3. Always Keep the Conversation Flowing with an Intentional, Context-Aware Follow-Up:
    - Never leave the user with an abrupt or blunt dead-end answer.
    - Conclude every answer with an intentional, context-specific follow-up question or helpful bridge that invites them to continue naturally:
-     * Refund / Cancellation: Explain policy politely, mention passes can be transferred to a friend, and ask if they would like help with transfer guidelines or ticket info.
+     * Refund / Cancellation / Transfer: Explain that tickets are strictly non-refundable and non-transferable (with full refund if officially cancelled by organisers), and ask if they need clarification on ticket validity or tier perks.
      * Tickets / Pricing: Ask which tier they are leaning towards or if they want details on VIP perks vs GA.
      * Lineup / Artists: Ask which artist or hit song they are most excited for, or if they want details on supporting acts.
-     * Venue / Timings: Ask if they need directions, parking info, or gate entry schedule.
+     * Venue / Timings: Ask if they need transit info, parking guidelines, or gate opening hours.
      * VIP Tables: Ask how many guests will be in their party so the concierge team can assist best.
    - Vary your follow-up wording dynamically so it never feels like a repetitive canned script.
 4. Do NOT start with robotic corporate intros like "Senter AI here, your official festival concierge! I'd be happy to tell you...". Jump straight to the helpful answer.
@@ -263,7 +268,7 @@ Conversation Guidelines & Dynamic Follow-Ups:
     if (/^\d{1,4}$/.test(q)) {
       const n = parseInt(q, 10);
       if (n === 1) {
-        return `If you're asking about Phase 1 tickets (GA LKR 15,000 / VIP LKR 45,000) or Zone 01 (Main Stage Arena), let me know which details you need!\n\nAre you looking to book passes or explore the arena layout?`;
+        return `If you're asking about Phase 1 tickets (GA LKR 15,000 / VIP LKR 35,000) or Zone 01 (Main Stage Arena), let me know which details you need!\n\nAre you looking to book passes or explore the arena layout?`;
       }
       if (n === 2) {
         return `If you're asking about Zone 02 (VIP Sky Lounge) or the 2-day festival pass, let me know how I can help!\n\nWould you like a breakdown of VIP lounge perks?`;
@@ -309,10 +314,10 @@ Conversation Guidelines & Dynamic Follow-Ups:
       return `You're very welcome! Let me know if there is anything else you need. See you at Port City Colombo on October 30-31!`;
     }
 
-    // 8. Refunds / Cancellations / Transfers
-    const refundWords = ['refund', 'refunds', 'cancel', 'cancellation', 'money back', 'resell', 'transfer'];
+    // 8. Refunds / Cancellations / Transfers / Upgrades
+    const refundWords = ['refund', 'refunds', 'cancel', 'cancellation', 'money back', 'resell', 'transfer', 'upgrade'];
     if (refundWords.some(w => q.includes(w))) {
-      return `All ticket sales for Senter Music Festival are final and non-refundable.\n\nHowever, tickets can be transferred to another person if you're unable to attend. Would you like more details on transfer guidelines, or help with something else?`;
+      return `All ticket sales for Senter Music Festival are final, strictly non-refundable, and non-transferable. GA tickets cannot be upgraded to VIP.\n\nIn the event that Senter Fest is officially cancelled by the organisers, the full ticket value will be refunded according to the official refund process.\n\nWould you like more details on ticket tiers, or help with something else?`;
     }
 
     // 9. Flecan specifically
@@ -325,9 +330,9 @@ Conversation Guidelines & Dynamic Follow-Ups:
       return `DJ Mass is a pioneering Sri Lankan EDM artist and music producer behind the chart-topping hit "Pem Kekula"—the first mainstream EDM track to reach #1 on major Sri Lankan broadcast and streaming charts. He will be performing live supporting DJ Snake at Senter Fest 2026.\n\nAre you interested in set timings, or passes to the festival?`;
     }
 
-    // 11. Organizers (Senter Records / LFG Entertainment)
+    // 11. Organizers (Senter Records / LFG Global Entertainment)
     if (q.includes('senter records') || q.includes('lfg') || q.includes('who is organizing') || q.includes('organizer')) {
-      return `Senter Music Festival is co-presented by Senter Records (the Sri Lankan music collective and label behind "Pem Kekula") and LFG Entertainment (a premier live concert and arena production company across the Asia-Pacific region).\n\nWould you like to know more about past editions or this year's production?`;
+      return `Senter Music Festival is co-presented by Senter Records (the Sri Lankan music collective and label behind "Pem Kekula") and LFG Global Entertainment Group Pte. Ltd. (a premier live concert and arena production company across the Asia-Pacific region).\n\nWould you like to know more about past editions or this year's production?`;
     }
 
     // 12. Academy (DJ Senter Academy)
@@ -345,10 +350,10 @@ Conversation Guidelines & Dynamic Follow-Ups:
       return `Senter has hosted 5 major editions with over 150,000 attendees, including the 2024 NYE Edition at Lotus Tower, the 2023 edition with Walshy Fire of Major Lazer, and the 2023 XO Music Festival at Port City Colombo.\n\nWould you like to see what is new for the 2026 2-day edition?`;
     }
 
-    // 15. Tickets / Pricing
+    // 15. Tickets / Pricing / Purchase Limits
     const ticketWords = ['ticket', 'tickets', 'price', 'prices', 'pass', 'passes', 'cost', 'how much', 'buy', 'presave', 'pre-save', 'tier', 'admission', 'tix', 'tckt'];
     if (ticketWords.some(w => q.includes(w))) {
-      return `Phase 1 pre-registration is open now on sentermusicfestival.com/tickets for 24-hour early access and discounted rates:\n\n* **General Admission (GA):** LKR 15,000 (Main stage arena & F&B village access)\n* **VIP Pass:** LKR 45,000 (Elevated VIP Sky Lounge & fast-track entry)\n* **VVIP Cabanas / Tables:** Custom concierge bookings via WhatsApp\n\nWhich ticket tier are you interested in, or would you like details on VIP perks?`;
+      return `Phase 1 pre-registration is open now on sentermusicfestival.com/tickets for 24-hour early access and discounted rates (max 10 tickets per transaction):\n\n* **General Admission (GA):** LKR 15,000 (Access for both days to Main Stage Arena & F&B village)\n* **VIP Pass:** LKR 35,000 (Access for both days to elevated VIP Sky Lounge & fast-track entry)\n* **VVIP Cabanas / Tables:** Custom luxury concierge bookings via WhatsApp\n\nWhich ticket tier are you interested in, or would you like details on VIP perks?`;
     }
 
     // 16. DJ Snake / Lineup / Artists
@@ -357,22 +362,50 @@ Conversation Guidelines & Dynamic Follow-Ups:
       return `DJ Snake is headlining with an exclusive two-night set on October 30 and 31, performing his multi-billion stream hits including 'Let Me Love You', 'Lean On', 'Taki Taki', and 'Turn Down for What'.\n\nSupporting acts include Sri Lankan EDM pioneer DJ Mass, Flecan, and 5 more regional artists to be revealed.\n\nAre you planning to attend on Friday, Saturday, or both nights?`;
     }
 
-    // 17. Venue / Location / Dates / Timings
-    const venueWords = ['where is', 'venue', 'location', 'port city', 'address', 'what time', 'festival hours', 'gate time', 'opening time', 'when is', 'portcity'];
+    // 17. Venue / Location / Dates / Timings / Gates / Parking
+    const venueWords = ['where is', 'venue', 'location', 'port city', 'address', 'what time', 'festival hours', 'gate time', 'opening time', 'gates open', 'when is', 'portcity', 'parking'];
     if (venueWords.some(w => q.includes(w))) {
-      return `The festival will be held at Port City Colombo on Friday, October 30 and Saturday, October 31, 2026. Gates open at 3:00 PM with music running from 6:00 PM to 2:00 AM daily.\n\nDo you need venue directions, parking info, or hotel recommendations nearby?`;
+      if (q.includes('parking')) {
+        return `Dedicated event parking is not available at Senter Fest. Parking within the Port City area, where applicable, is at the vehicle owner's own risk.\n\nWould you like details on ride-share drop-off points or gate opening hours?`;
+      }
+      return `The festival will be held at Port City Colombo on Friday, October 30 and Saturday, October 31, 2026. Gates open at 4:00 PM on both days, with music and stage performances running from 6:00 PM to 2:00 AM daily.\n\nDo you need venue directions, transit guidelines, or ticket pass info?`;
     }
 
-    // 18. VIP Tables / Cabanas / Concierge / WhatsApp
+    // 18. Age Limit & Minor Rules
+    if (q.includes('age') || q.includes('old') || q.includes('minor') || q.includes('kid') || q.includes('child') || q.includes('16') || q.includes('18')) {
+      return `Ticket holders must be 16 years or older to attend Senter Fest independently. Guests under 16 must be accompanied by a parent or legal guardian, who must purchase the ticket on their behalf. Children below 7 years old will not be admitted.\n\nValid government photo ID (NIC or Passport) is required at the entrance. Would you like more details on entry policies?`;
+    }
+
+    // 19. Prohibited Items & Security Screening
+    if (q.includes('prohibit') || q.includes('allowed') || q.includes('smoking') || q.includes('cigarette') || q.includes('drink') || q.includes('food') || q.includes('alcohol') || q.includes('drug') || q.includes('drone')) {
+      return `For safety and security, prohibited items include drugs/illegal substances, cigarettes and smoking products, weapons, outside food and beverages, alcohol, and unauthorized professional cameras/drones. All guests are screened at entry.\n\nWould you like information on F&B village stalls or gate opening times?`;
+    }
+
+    // 20. Weather & Rain Policy
+    if (q.includes('rain') || q.includes('weather')) {
+      return `Senter Fest is an outdoor experience—we dance in the rain! The event will continue during changing weather conditions unless officially cancelled by the organisers for safety.\n\nWould you like more info on event timings or what to bring?`;
+    }
+
+    // 21. Privacy Policy & Data Protection
+    if (q.includes('privacy') || q.includes('data') || q.includes('nic') || q.includes('passport')) {
+      return `Personal data (such as Full Name, NIC/Passport ID, and Email) is securely processed by LFG Global Entertainment Group Pte. Ltd. strictly for ticket fulfillment, QR validation, and gate entry security to eliminate fraudulent tickets and scalping.\n\nYour data is never sold or rented. For privacy questions, contact hello@lfg-entertainment.com.\n\nWould you like more details on ticket registration?`;
+    }
+
+    // 22. VIP Tables / Cabanas / Concierge / WhatsApp
     const vipWords = ['vip table', 'cabana', 'cabanas', 'bottle service', 'vip booking', 'whatsapp concierge', 'table reservation'];
     if (vipWords.some(w => q.includes(w))) {
       return `For private VIP cabanas, table reservations, and dedicated bottle service, our concierge team is available directly on WhatsApp at +94 77 117 7118.\n\nHow many guests will be in your group so our team can provide the right cabana package?`;
     }
 
-    // 19. Festival Zones / Halloween
+    // 23. Festival Zones / Halloween
     const zoneWords = ['zone', 'zones', 'halloween zone', 'food village', 'f&b village', 'sky lounge', 'stages'];
     if (zoneWords.some(w => q.includes(w))) {
       return `Senter Fest features 7 distinct zones across Port City Colombo, including the Main Stage Arena, VIP Sky Lounge, a themed Halloween Experience Zone, and a full F&B Village with international and local food stalls.\n\nWould you like details on a specific zone or ticket access?`;
+    }
+
+    // 24. Contact & Customer Support
+    if (q.includes('contact') || q.includes('email') || q.includes('support') || q.includes('phone') || q.includes('reach')) {
+      return `You can reach the Senter Fest team through our official channels:\n\n* **WhatsApp / Phone Concierge:** +94 77 117 7118\n* **Ticketing Inquiries:** tickets@lfg-entertainment.com\n* **General & Privacy Support:** hello@lfg-entertainment.com\n* **Official Website:** www.sentermusicfestival.com\n\nHow can our support team assist you today?`;
     }
 
     // 20. General Unmatched Queries
