@@ -23,7 +23,27 @@ class LLMService {
   }
 
   getSystemInstruction(context) {
-    const festivalOverview = `Event: Senter Music Festival 2026 (DJ Snake Live in Sri Lanka - Halloween 2-Day Edition).
+    const now = new Date();
+    const currentDateStr = now.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      timeZone: 'Asia/Colombo'
+    });
+    const currentTimeStr = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Asia/Colombo'
+    });
+
+    const festivalDate = new Date('2026-10-30T16:00:00+05:30');
+    const msDiff = festivalDate.getTime() - now.getTime();
+    const daysRemaining = Math.max(0, Math.ceil(msDiff / (1000 * 60 * 60 * 24)));
+
+    const festivalOverview = `Current Date & Time: ${currentDateStr}, ${currentTimeStr} (Sri Lanka Time / Asia/Colombo, UTC+5:30).
+Countdown: Exactly ${daysRemaining} days remaining until Senter Music Festival 2026 begins on October 30, 2026.
+Event: Senter Music Festival 2026 (DJ Snake Live in Sri Lanka - Halloween 2-Day Edition).
 Dates: Friday, October 30 & Saturday, October 31, 2026 (Gates open at 4:00 PM daily; festival music 6:00 PM - 2:00 AM daily).
 Venue: Port City Colombo, Western Province, Sri Lanka (Postal Code: 00100).
 Headliner: DJ Snake (exclusive 2-night headline set, hits: Let Me Love You, Lean On, Taki Taki, Middle, Turn Down for What, Loco Contigo).
@@ -43,17 +63,20 @@ Organizers: LFG Global Entertainment Group Pte. Ltd. & Senter Records.`;
       : festivalOverview;
 
     return `You are Senter AI, the official festival concierge for Senter Music Festival 2026 featuring DJ Snake Live in Sri Lanka at Port City Colombo (October 30-31, 2026).
+Current Date: Today is ${currentDateStr} (${currentTimeStr} Sri Lanka Time).
+Festival Countdown: There are exactly ${daysRemaining} days remaining until October 30, 2026.
 
 Festival Knowledge:
 ${cleanContext}
 
 Conversation Guidelines & Dynamic Follow-Ups:
 1. Speak naturally, warmly, and concisely like a real human concierge on the festival team.
-2. Structure responses for quick mobile readability:
+2. If asked about the current date, time, or how many days/dates remain until the festival, calculate and state the exact number directly (${daysRemaining} days remaining until October 30, 2026) without ever asking the user for today's date.
+3. Structure responses for quick mobile readability:
    - Use short, crisp sentences (never long walls of text).
    - Use bullet points (- or *) with bold titles when explaining features, tiers, or artists.
    - Separate paragraphs with blank lines.
-3. Always Keep the Conversation Flowing with an Intentional, Context-Aware Follow-Up:
+4. Always Keep the Conversation Flowing with an Intentional, Context-Aware Follow-Up:
    - Never leave the user with an abrupt or blunt dead-end answer.
    - Conclude every answer with an intentional, context-specific follow-up question or helpful bridge that invites them to continue naturally:
      * Refund / Cancellation / Transfer: Explain that tickets are strictly non-refundable and non-transferable (with full refund if officially cancelled by organisers), and ask if they need clarification on ticket validity or tier perks.
@@ -314,7 +337,22 @@ Conversation Guidelines & Dynamic Follow-Ups:
       return `You're very welcome! Let me know if there is anything else you need. See you at Port City Colombo on October 30-31!`;
     }
 
-    // 8. Refunds / Cancellations / Transfers / Upgrades
+    // 8. Countdown / Days Remaining / Current Date & Time
+    const countdownWords = ['how many day', 'how many dates', 'days till', 'days until', 'days left', 'how long until', 'countdown', 'what date', 'today date', 'current date', 'dates till'];
+    if (countdownWords.some(w => q.includes(w))) {
+      const now = new Date();
+      const festivalDate = new Date('2026-10-30T16:00:00+05:30');
+      const msDiff = festivalDate.getTime() - now.getTime();
+      const daysRemaining = Math.max(0, Math.ceil(msDiff / (1000 * 60 * 60 * 24)));
+      
+      if (q.includes('just need a number') || q.includes('only the number') || q.includes('just number') || q.includes('just the number')) {
+        return `${daysRemaining}`;
+      }
+
+      return `There are exactly ${daysRemaining} days until Senter Music Festival 2026 kicks off on October 30, 2026 at Port City Colombo.\n\nAre you looking to secure your Phase 1 passes or explore the lineup?`;
+    }
+
+    // 9. Refunds / Cancellations / Transfers / Upgrades
     const refundWords = ['refund', 'refunds', 'cancel', 'cancellation', 'money back', 'resell', 'transfer', 'upgrade'];
     if (refundWords.some(w => q.includes(w))) {
       return `All ticket sales for Senter Music Festival are final, strictly non-refundable, and non-transferable. GA tickets cannot be upgraded to VIP.\n\nIn the event that Senter Fest is officially cancelled by the organisers, the full ticket value will be refunded according to the official refund process.\n\nWould you like more details on ticket tiers, or help with something else?`;
