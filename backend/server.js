@@ -105,7 +105,7 @@ function rateLimiter(req, res, next) {
 
 // Initialize RAG and LLM
 const rag = new RAGEngine(path.join(__dirname, 'rag', 'kb_data.json'));
-let llm = new LLMService(process.env.GEMINI_API_KEY, process.env.GEMINI_MODEL || 'gemini-2.5-flash');
+let llm = new LLMService();
 
 // Static assets
 app.use('/widget', express.static(path.join(__dirname, '..', 'widget')));

@@ -5,8 +5,7 @@
   "main": "backend/server.js",
   "scripts": {
     "start": "node backend/server.js",
-    "dev": "node --watch backend/server.js",
-    "test": "node backend/test/rag_test.js"
+    "dev": "node --watch backend/server.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
