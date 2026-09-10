@@ -1,19 +1,23 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 class LLMService {
-  constructor(apiKey, modelName = 'google/gemini-2.5-flash') {
+  constructor(apiKey, modelName = 'nex-agi/nex-n2.5-pro:free') {
     this.openRouterKey = process.env.OPENROUTER_API_KEY || (apiKey && apiKey.startsWith('sk-or-') ? apiKey : '');
     this.geminiKey = process.env.GEMINI_API_KEY || (!apiKey?.startsWith('sk-or-') ? apiKey : '');
-    this.modelName = process.env.OPENROUTER_MODEL || modelName || 'google/gemini-2.5-flash';
+    this.modelName = process.env.OPENROUTER_MODEL || modelName || 'nex-agi/nex-n2.5-pro:free';
 
+    // Free OpenRouter models list with automated failover
     this.candidateModels = [
       this.modelName,
-      'google/gemini-2.5-flash',
-      'meta-llama/llama-3.3-70b-instruct'
-    ];
+      'nex-agi/nex-n2.5-pro:free',
+      'nex-agi/nex-n2.5-mini:free',
+      'inclusionai/ling-3.0-flash-fin:free',
+      'dots-studio/dots-3-note-preview:free',
+      'openrouter/free'
+    ].filter((m, idx, arr) => m && arr.indexOf(m) === idx);
 
     if (this.openRouterKey) {
-      console.log(`[LLMService] Initialized OpenRouter LLM client (Model: ${this.modelName})`);
+      console.log(`[LLMService] Initialized OpenRouter Free LLM client (Default: ${this.modelName})`);
     } else if (this.geminiKey) {
       this.genAI = new GoogleGenerativeAI(this.geminiKey);
       console.log(`[LLMService] Initialized Google Gemini client`);
@@ -193,56 +197,60 @@ Conversation Guidelines & Dynamic Follow-Ups:
       }
       messages.push({ role: 'user', content: userQuery });
 
-      try {
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${this.openRouterKey}`,
-            'Content-Type': 'application/json',
-            'HTTP-Referer': 'https://sentermusicfestival.com',
-            'X-Title': 'Senter AI Concierge'
-          },
-          body: JSON.stringify({
-            model: this.modelName,
-            max_tokens: 600,
-            temperature: 0.7,
-            stream: true,
-            messages
-          })
-        });
+      for (const modelName of this.candidateModels) {
+        try {
+          const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${this.openRouterKey}`,
+              'Content-Type': 'application/json',
+              'HTTP-Referer': 'https://sentermusicfestival.com',
+              'X-Title': 'Senter AI Concierge'
+            },
+            body: JSON.stringify({
+              model: modelName,
+              max_tokens: 600,
+              temperature: 0.7,
+              stream: true,
+              messages
+            })
+          });
 
-        if (response.ok && response.body) {
-          const reader = response.body.getReader();
-          const decoder = new TextDecoder('utf-8');
-          let buffer = '';
+          if (response.ok && response.body) {
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder('utf-8');
+            let buffer = '';
+            let emittedChunk = false;
 
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
 
-            buffer += decoder.decode(value, { stream: true });
-            const lines = buffer.split('\n');
-            buffer = lines.pop() || '';
+              buffer += decoder.decode(value, { stream: true });
+              const lines = buffer.split('\n');
+              buffer = lines.pop() || '';
 
-            for (const line of lines) {
-              const trimmed = line.trim();
-              if (trimmed.startsWith('data: ') && trimmed !== 'data: [DONE]') {
-                try {
-                  const parsed = JSON.parse(trimmed.slice(6));
-                  const chunk = parsed.choices?.[0]?.delta?.content;
-                  if (chunk) {
-                    yield this._stripEmojis(chunk);
+              for (const line of lines) {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('data: ') && trimmed !== 'data: [DONE]') {
+                  try {
+                    const parsed = JSON.parse(trimmed.slice(6));
+                    const chunk = parsed.choices?.[0]?.delta?.content;
+                    if (chunk) {
+                      emittedChunk = true;
+                      yield this._stripEmojis(chunk);
+                    }
+                  } catch (e) {
+                    // Skip unparseable stream chunks
                   }
-                } catch (e) {
-                  // Skip unparseable stream chunks
                 }
               }
             }
+            if (emittedChunk) return;
           }
-          return;
+        } catch (err) {
+          console.warn(`[LLMService] OpenRouter stream for '${modelName}' failed, trying next candidate...`);
         }
-      } catch (err) {
-        console.warn('[LLMService] OpenRouter stream failed, falling back...');
       }
     }
 
